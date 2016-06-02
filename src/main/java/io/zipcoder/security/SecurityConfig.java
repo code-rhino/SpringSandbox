@@ -32,14 +32,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Order(Ordered.HIGHEST_PRECEDENCE)
     protected void configure(HttpSecurity http) throws Exception{
         http
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authorizeRequests()
-                .antMatchers("/**").permitAll()
-                .and()
-        .csrf().disable();
-
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .authorizeRequests()
+            .antMatchers("*")
+            .permitAll()
+            .and()
+            .csrf().disable()
+            .headers().frameOptions().disable();
     }
 
     @Override
